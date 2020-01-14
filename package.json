@@ -13,7 +13,7 @@
   "scripts": {
     "start": "PORT=3001 react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
     "cy:open": "yarn start --silent & cypress open",
