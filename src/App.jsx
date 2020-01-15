@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import DisplayCurrentArticle from "./components/DisplayCurrentArticle";
-import { getData } from "./modules/getData";
+import { getData, getCurrentArticle } from "./modules/getData";
 
 class App extends Component {
   state = {
-    currentShowArticle: [],
-    showArticleLoaded: false
+    currentArticle: null,
+    message: 'Loading...'
   };
 
   componentDidMount() {
@@ -13,21 +13,34 @@ class App extends Component {
   }
 
   async getArticleShowData() {
-    this.setState({
-      currentShowArticle: await getData(),
-      showArticleLoaded: true
-    });
+    const article = await getCurrentArticle();
+
+    if (article.error) {
+      this.setState({
+        message: article.error 
+      })
+    } else {
+      this.setState({
+        currentArticle: article
+      });
+    }
   }
 
   render() {
-    let showArticleLoaded = this.state.showArticleLoaded
-    let currentShowArticle = showArticleLoaded ? this.state.currentShowArticle.data : "Loading"
-    debugger
+    let currentArticle = this.state.currentArticle,
+        message = this.state.message
     return (
       <>
-        <DisplayCurrentArticle
-          props={showArticleLoaded ? currentShowArticle : null }
-        />
+        {
+          currentArticle ? (
+            <DisplayCurrentArticle
+              article={currentArticle}
+            />
+          ) : (
+            <p id="message">{message}</p>
+          )
+        }
+        
       </>
     );
   }

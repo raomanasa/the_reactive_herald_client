@@ -1,12 +1,11 @@
 import React from "react";
 
-const DisplayCurrentArticle = (props) => {
-
+const DisplayCurrentArticle = ({article}) => {
   return (
     <>
-      <div key={props.data.id}>
-        <p id="article-title">{props.data.title}</p>
-        <p id="article-body">{props.data.body}</p>
+      <div class="main-article-div" key={article.id}>
+        <p id="article-title">{article.title}</p>
+        <p id="article-body">{article.body}</p>
       </div>
     </>
   );
