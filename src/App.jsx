@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import DisplayCurrentArticle from "./components/DisplayCurrentArticle";
-import { getData, getCurrentArticle } from "./modules/getData";
+import { getCurrentArticle } from "./modules/getCurrentArticle";
 
 class App extends Component {
   state = {
     currentArticle: null,
-    message: 'Loading...'
+    message: "Loading..."
   };
 
   componentDidMount() {
@@ -17,8 +17,8 @@ class App extends Component {
 
     if (article.error) {
       this.setState({
-        message: article.error 
-      })
+        message: article.error
+      });
     } else {
       this.setState({
         currentArticle: article
@@ -28,19 +28,14 @@ class App extends Component {
 
   render() {
     let currentArticle = this.state.currentArticle,
-        message = this.state.message
+      message = this.state.message;
     return (
       <>
-        {
-          currentArticle ? (
-            <DisplayCurrentArticle
-              article={currentArticle}
-            />
-          ) : (
-            <p id="message">{message}</p>
-          )
-        }
-        
+        {currentArticle ? (
+          <DisplayCurrentArticle article={currentArticle} />
+        ) : (
+          <p id="message">{message}</p>
+        )}
       </>
     );
   }

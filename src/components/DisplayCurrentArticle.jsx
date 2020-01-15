@@ -1,6 +1,6 @@
 import React from "react";
 
-const DisplayCurrentArticle = ({article}) => {
+const DisplayCurrentArticle = ({ article }) => {
   return (
     <>
       <div class="main-article-div" key={article.id}>
@@ -11,4 +11,4 @@ const DisplayCurrentArticle = ({article}) => {
   );
 };
 
-export default DisplayCurrentArticle
+export default DisplayCurrentArticle;
