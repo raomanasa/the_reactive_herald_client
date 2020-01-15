@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const getData = async () => {
-  const response = await axios.get("/articles/1");
+const getData = () => {
+  const response = axios.get("/articles/1");
   return response;
 }
 

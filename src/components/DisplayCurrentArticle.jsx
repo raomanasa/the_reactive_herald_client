@@ -4,9 +4,9 @@ const DisplayCurrentArticle = (props) => {
 
   return (
     <>
-      <div class="main-article-div">
-        <p id="article-title">{props.title}</p>
-        <p id="article-body">{props.body}</p>
+      <div key={props.data.id}>
+        <p id="article-title">{props.data.title}</p>
+        <p id="article-body">{props.data.body}</p>
       </div>
     </>
   );
