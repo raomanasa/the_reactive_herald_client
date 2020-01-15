@@ -11,6 +11,6 @@ describe("User is shown current article", () => {
         response: "fixture:articles_show.json"
       });
 
-      cy.get("main-article-div").should("contain", "1");
+      cy.get("main-article-div").should("contain", "Some text");
     });
   })
