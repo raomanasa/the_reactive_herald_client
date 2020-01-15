@@ -13,6 +13,8 @@ describe("<DisplayCurrentArticle />", () => {
     });
 
     it("and returns the article in the div", () => {
-      expect(describedComponent.find("main-article-div").text()).toEqual("Article 1")
+      expect(describedComponent.find("main-article-div").text()).toEqual("Article 1");
       expect(describedComponent.find("main-article-div").text()).toEqual("Body Text 1");
-    })
+    });
+  });
+})
