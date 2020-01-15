@@ -7,8 +7,6 @@ class App extends Component {
     return (
       <>
       <DisplayCurrentArticle id="1"/>
-      <div> the reactive herald
-      </div>
       </>
     );
   }
