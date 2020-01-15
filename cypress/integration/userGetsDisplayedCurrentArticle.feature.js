@@ -1,4 +1,4 @@
-describe("User is shown current article"), () => {
+describe("User is shown current article", () => {
     beforeEach(() => {
       cy.server();
       cy.visit("/");
@@ -13,4 +13,4 @@ describe("User is shown current article"), () => {
 
       cy.get("main-article-div").should("contain", "1");
     });
-  };
+  })
