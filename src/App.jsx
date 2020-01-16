@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import DisplayCurrentArticle from "./components/DisplayCurrentArticle";
-import { getCurrentArticle } from "./modules/getArticlesData";
+import { getCurrentArticle, getArticles } from "./modules/getArticlesData";
+import DisplaySideArticles from "./components/DisplaySideArticles";
 
 class App extends Component {
   state = {
     currentArticle: null,
-    message: "Loading..."
+    message: "Loading...",
+    sideArticles: null
   };
 
   componentDidMount() {
@@ -14,6 +16,7 @@ class App extends Component {
 
   async getArticleShowData() {
     const article = await getCurrentArticle();
+
     if (article.error) {
       this.setState({
         message: article.error
@@ -23,17 +26,28 @@ class App extends Component {
         currentArticle: article
       });
     }
+
+    const articlesData = await getArticles();
+    this.setState({
+      sideArticles: articlesData.articles
+    })
   }
 
   render() {
     let currentArticle = this.state.currentArticle,
-      message = this.state.message;
+      message = this.state.message,
+      sideArticles = this.state.sideArticles;
     return (
       <>
         {currentArticle ? (
           <DisplayCurrentArticle article={currentArticle} />
         ) : (
           <p id="message">{message}</p>
+        )}
+        {sideArticles ? (
+          <DisplaySideArticles sideArticles={sideArticles} />
+        ) : (
+          <p id="side-message">Loading...</p>
         )}
       </>
     );
