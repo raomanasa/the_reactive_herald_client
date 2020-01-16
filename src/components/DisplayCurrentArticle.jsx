@@ -1,14 +1,14 @@
 import React from "react";
 
-const DisplayCurrentArticle = (props) => {
+const DisplayCurrentArticle = ({ article }) => {
   return (
     <>
-      <div className="main-article-div">
-        <p id="article-title">{props.id}</p>
-        <p id="article-body">{props.id}</p>
+      <div id="main-article-div" key={article.id}>
+        <p id="article-title">{article.title}</p>
+        <p id="article-body">{article.body}</p>
       </div>
     </>
   );
 };
 
-export default DisplayCurrentArticle
+export default DisplayCurrentArticle;
