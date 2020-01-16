@@ -10,7 +10,7 @@ describe("User is shown current article", () => {
       response: "fixture:articles_show.json"
     });
     cy.visit("/");
-    cy.get("#main-article-div").should("contain", "Some text");
+    cy.get("#main-article-div").should("contain", "Body 1");
   });
 
   it("unsuccessfully, specific article not found", () => {
@@ -18,9 +18,9 @@ describe("User is shown current article", () => {
       method: "GET",
       url: "http://localhost:3000/api/v1/articles/1",
       response: "fixture:specific_article_not_found.json",
-      status: 401
+      status: 404
     });
     cy.visit("/");
-    cy.get("#message").should("contain", "ID does not exist");
+    cy.get("#message").should("contain", "Article not found");
   });
 });
