@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DisplayCurrentArticle from "./components/DisplayCurrentArticle";
-import { getCurrentArticle } from "./modules/getCurrentArticle";
+import { getCurrentArticle } from "./modules/getArticlesData";
 
 class App extends Component {
   state = {

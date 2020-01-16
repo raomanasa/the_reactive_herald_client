@@ -9,4 +9,13 @@ const getCurrentArticle = async () => {
   }
 };
 
-export { getCurrentArticle };
+const getArticles = async () => {
+  try {
+    const response = await axios.get("/articles");
+    return response.data
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
+export { getCurrentArticle, getArticles };
