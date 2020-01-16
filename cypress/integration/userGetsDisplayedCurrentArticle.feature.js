@@ -10,7 +10,7 @@ describe("User is shown current article", () => {
       response: "fixture:articles_show.json"
     });
     cy.visit("/");
-    cy.get(".main-article-div").should("contain", "Some text");
+    cy.get("#main-article-div").should("contain", "Some text");
   });
 
   it("unsuccessfully, specific article not found", () => {

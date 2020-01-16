@@ -14,6 +14,7 @@ class App extends Component {
 
   async getArticleShowData() {
     const article = await getCurrentArticle();
+    debugger
 
     if (article.error) {
       this.setState({
