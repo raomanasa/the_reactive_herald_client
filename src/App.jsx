@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <>
         {currentArticle ? (
-          <DisplayCurrentArticle article={currentArticle} />
+          <DisplayCurrentArticle />
         ) : (
           <p id="message">{message}</p>
         )}
