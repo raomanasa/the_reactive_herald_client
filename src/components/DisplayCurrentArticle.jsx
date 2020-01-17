@@ -4,18 +4,16 @@ import { getCurrentArticle } from "../modules/getArticlesData";
 
 const DisplayCurrentArticle = ( props ) => {
   
-  const getArticleShowData = async () => {
-    const article = await getCurrentArticle();
+  const getArticleShowData = async (id) => {
+    const article = await getCurrentArticle(id);
 
     if (article.error) {
       props.changeMessage(article.error)
-    } else {
-      props.changeCurrentArticle(article)
     }
   }
 
-  if (!props.currentArticle) {
-    getArticleShowData()
+  if (props.currentArticle) {
+    getArticleShowData(props.currentArticle.id)
   }
 
   return (
@@ -42,7 +40,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeMessage: message => {dispatch({type: 'CHANGE_MESSAGE', payload: message })},
-    changeCurrentArticle: article => {dispatch({ type: 'CHANGE_ARTICLE', payload: article })},
   }
 }
 

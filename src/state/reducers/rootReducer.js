@@ -13,7 +13,6 @@ const rootReducer = (state = initialState, action) => {
         message: action.payload
       }
     case 'CHANGE_ARTICLES_DATA':
-      debugger
       return {
         ...state,
         sideArticles: action.payload

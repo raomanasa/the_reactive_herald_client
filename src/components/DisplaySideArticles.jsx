@@ -5,12 +5,17 @@ import { getArticles } from "../modules/getArticlesData";
 const DisplaySideArticles = (props) => {
   const getArticleShowData = async () => {
     const articlesData = await getArticles();
-    props.changeSideArticlesData(articlesData);
+    props.changeSideArticlesData(articlesData);    
   };
 
   if (!props.sideArticles) {
     getArticleShowData();
   }
+
+  if (props.sideArticles) {
+    props.changeCurrentArticle(props.sideArticles.articles[0])
+  }
+
   let articlesList;
 
   if (props.sideArticles) {
@@ -37,8 +42,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeSideArticlesData: articlesData => {
-      dispatch({ type: 'CHANGE_ARTICLES_DATA', payload: articlesData });
-    }
+      dispatch({ type: 'CHANGE_ARTICLES_DATA', payload: articlesData })
+    },
+    changeCurrentArticle: article => {dispatch({ type: 'CHANGE_ARTICLE', payload: article })},
   };
 };
 
