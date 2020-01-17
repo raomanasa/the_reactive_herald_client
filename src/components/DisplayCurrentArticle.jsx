@@ -5,7 +5,6 @@ import { getCurrentArticle } from "../modules/getArticlesData";
 const DisplayCurrentArticle = props => {
   const getArticleShowData = async id => {
     const article = await getCurrentArticle(id);
-
     if (article.error) {
       props.changeMessage(article.error);
     } else {
