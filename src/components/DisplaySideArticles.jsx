@@ -2,23 +2,23 @@ import React from "react";
 import { connect } from "react-redux";
 import { getArticles } from "../modules/getArticlesData";
 
-const DisplaySideArticles = (props) => {
+const DisplaySideArticles = props => {
   const getArticleShowData = async () => {
     const articlesData = await getArticles();
-    props.changeSideArticlesData(articlesData);    
+    props.changeSideArticlesData(articlesData);
   };
 
   if (!props.sideArticles) {
     getArticleShowData();
   }
 
-  if (props.sideArticles) {
-    props.changeCurrentArticleId(props.sideArticles.articles[0].id)
+  if (props.sideArticles && props.sideArticles.articles.length > 0) {
+    props.changeCurrentArticleId(props.sideArticles.articles[0].id);
   }
 
   let articlesList;
 
-  if (props.sideArticles) {
+  if (props.sideArticles && props.sideArticles.articles.length > 0) {
     let articlesList = props.sideArticles.articles.map(x => {
       return (
         <div id={`side-articles-div-${x.id}`} key={x.id}>
@@ -28,9 +28,19 @@ const DisplaySideArticles = (props) => {
       );
     });
     return articlesList;
-  } 
+  }
 
-  return <>{props.sideArticles ? articlesList : <p id="message">Loading...</p>}</>;
+  return (
+    <>
+    {!props.sideArticles ? (
+        <p id="message">Loading...</p>
+      ) : (props.sideArticles.articles.length > 0) ? (
+        articlesList
+      ) : (
+        <p id="message2">No articles found</p>
+      )}
+    </>
+  );
 };
 
 const mapStateToProps = state => {
@@ -42,9 +52,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeSideArticlesData: articlesData => {
-      dispatch({ type: 'CHANGE_ARTICLES_DATA', payload: articlesData })
+      dispatch({ type: "CHANGE_ARTICLES_DATA", payload: articlesData });
     },
-    changeCurrentArticleId: id => {dispatch({ type: 'CHANGE_ARTICLE_ID', payload: id })},
+    changeCurrentArticleId: id => {
+      dispatch({ type: "CHANGE_ARTICLE_ID", payload: id });
+    }
   };
 };
 

@@ -2,7 +2,7 @@ describe("Visitor can see side articles", () => {
   beforeEach(() => {
     cy.server();
   });
-
+  
   it("successfully", () => {
     cy.route({
       method: "GET",
@@ -12,5 +12,16 @@ describe("Visitor can see side articles", () => {
     cy.visit("/");
     cy.get("#main-article-div").should("contain", "Body 1");
     cy.get("#side-articles-div-2").should("contain", "TestBody2");
+  });
+
+  it("unsuccessfully", () => {
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v1/articles",
+      response: "fixture:side_articles_empty.json"
+    });
+    cy.visit("/");
+    cy.get("#message").should("contain", "Article not found");
+    cy.get("#message2").should("contain", "No articles found");
   });
 });
