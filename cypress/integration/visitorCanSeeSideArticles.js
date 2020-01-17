@@ -10,7 +10,7 @@ describe("Visitor can see side articles", () => {
       response: "fixture:side_articles_shown.json"
     });
     cy.visit("/");
-    cy.get("#side-articles-div-2").should("contain", "TestBody2");
+    cy.get("#side-articles").children().should("have.length", "4");
   });
 
   it("unsuccessfully", () => {
@@ -20,6 +20,6 @@ describe("Visitor can see side articles", () => {
       response: "fixture:side_articles_empty.json"
     });
     cy.visit("/");
-    cy.get("#message2").should("contain", "No articles found");
+    cy.get("#error-message").should("contain", "No articles found");
   });
 });

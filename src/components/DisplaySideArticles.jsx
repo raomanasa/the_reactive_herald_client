@@ -19,25 +19,25 @@ const DisplaySideArticles = props => {
   let articlesList;
 
   if (props.sideArticles && props.sideArticles.articles.length > 0) {
-    let articlesList = props.sideArticles.articles.map(x => {
+    let articlesList = props.sideArticles.articles.map(article => {
       return (
-        <div id={`side-articles-div-${x.id}`} key={x.id}>
-          <p id="article-title">{x.title}</p>
-          <p id="article-body">{x.body}</p>
+        <div id={`side-article-${article.id}`} key={article.id}>
+          <p>{article.title}</p>
+          <p>{article.body}</p>
         </div>
       );
     });
-    return articlesList;
+    return <div id="side-articles">{articlesList}</div>;
   }
 
   return (
     <>
-    {!props.sideArticles ? (
+      {!props.sideArticles ? (
         <p id="message">Loading...</p>
-      ) : (props.sideArticles.articles.length > 0) ? (
+      ) : props.sideArticles.articles.length > 0 ? (
         articlesList
       ) : (
-        <p id="message2">No articles found</p>
+        <p id="error-message">No articles found</p>
       )}
     </>
   );
