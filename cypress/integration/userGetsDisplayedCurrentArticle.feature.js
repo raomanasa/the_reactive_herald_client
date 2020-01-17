@@ -1,6 +1,7 @@
 describe("User is shown current article", () => {
   beforeEach(() => {
     cy.server();
+    cy.visit("/");
   });
 
   it("successfully", () => {
@@ -9,7 +10,6 @@ describe("User is shown current article", () => {
       url: "http://localhost:3000/api/v1/articles/1",
       response: "fixture:articles_show.json"
     });
-    cy.visit("/");
     cy.get("#main-article-div").should("contain", "Body 1");
   });
 
@@ -20,7 +20,6 @@ describe("User is shown current article", () => {
       response: "fixture:specific_article_not_found.json",
       status: 404
     });
-    cy.visit("/");
     cy.get("#message").should("contain", "Article not found");
   });
 });

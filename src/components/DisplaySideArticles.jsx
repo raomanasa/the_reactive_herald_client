@@ -13,7 +13,7 @@ const DisplaySideArticles = (props) => {
   }
 
   if (props.sideArticles) {
-    props.changeCurrentArticle(props.sideArticles.articles[0])
+    props.changeCurrentArticleId(props.sideArticles.articles[0].id)
   }
 
   let articlesList;
@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => {
     changeSideArticlesData: articlesData => {
       dispatch({ type: 'CHANGE_ARTICLES_DATA', payload: articlesData })
     },
-    changeCurrentArticle: article => {dispatch({ type: 'CHANGE_ARTICLE', payload: article })},
+    changeCurrentArticleId: id => {dispatch({ type: 'CHANGE_ARTICLE_ID', payload: id })},
   };
 };
 

@@ -9,11 +9,13 @@ const DisplayCurrentArticle = ( props ) => {
 
     if (article.error) {
       props.changeMessage(article.error)
+    } else {
+      props.changeCurrentArticle(article)
     }
   }
 
-  if (props.currentArticle) {
-    getArticleShowData(props.currentArticle.id)
+  if (props.currentArticleId) {
+    getArticleShowData(props.currentArticleId)
   }
 
   return (
@@ -33,6 +35,7 @@ const DisplayCurrentArticle = ( props ) => {
 const mapStateToProps = state => {
   return {
     currentArticle: state.currentArticle,
+    currentArticleId: state.currentArticleId,
     message: state.message
   }
 }
@@ -40,6 +43,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeMessage: message => {dispatch({type: 'CHANGE_MESSAGE', payload: message })},
+    changeCurrentArticle: article => {dispatch({ type: 'CHANGE_ARTICLE', payload: article })},
   }
 }
 

@@ -11,6 +11,6 @@ describe("Visitor can see side articles", () => {
     });
     cy.visit("/");
     cy.get("#main-article-div").should("contain", "Body 1");
-    cy.get("#side-articles-div").should("contain", "Body 2");
+    cy.get("#side-articles-div-2").should("contain", "TestBody2");
   });
 });
