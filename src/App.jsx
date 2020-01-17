@@ -1,43 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import DisplayCurrentArticle from "./components/DisplayCurrentArticle";
-import { getCurrentArticle } from "./modules/getCurrentArticle";
+import DisplaySideArticles from "./components/DisplaySideArticles";
 
-class App extends Component {
-  state = {
-    currentArticle: null,
-    message: "Loading..."
-  };
-
-  componentDidMount() {
-    this.getArticleShowData();
-  }
-
-  async getArticleShowData() {
-    const article = await getCurrentArticle();
-    if (article.error) {
-      this.setState({
-        message: article.error
-      });
-    } else {
-      this.setState({
-        currentArticle: article
-      });
-    }
-  }
-
-  render() {
-    let currentArticle = this.state.currentArticle,
-      message = this.state.message;
+const App = () => {
     return (
       <>
-        {currentArticle ? (
-          <DisplayCurrentArticle article={currentArticle} />
-        ) : (
-          <p id="message">{message}</p>
-        )}
+        <DisplayCurrentArticle />
+        <DisplaySideArticles />
       </>
     );
   }
-}
 
 export default App;

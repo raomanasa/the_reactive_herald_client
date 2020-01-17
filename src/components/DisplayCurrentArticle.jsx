@@ -1,14 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { getCurrentArticle } from "../modules/getArticlesData";
 
-const DisplayCurrentArticle = ({ article }) => {
+const DisplayCurrentArticle = props => {
+  const getArticleShowData = async id => {
+    const article = await getCurrentArticle(id);
+    if (article.error) {
+      props.changeMessage(article.error);
+    } else {
+      props.changeCurrentArticle(article);
+    }
+  };
+
+  useEffect(() => {
+    getArticleShowData(props.currentArticleId);
+  }, [props.currentArticleId]);
+
   return (
     <>
-      <div id="main-article-div" key={article.id}>
-        <p id="article-title">{article.title}</p>
-        <p id="article-body">{article.body}</p>
-      </div>
+      {props.currentArticle ? (
+        <div id="main-article-div" key={props.currentArticle.id}>
+          <p id="article-title">{props.currentArticle.title}</p>
+          <p id="article-body">{props.currentArticle.body}</p>
+        </div>
+      ) : (
+        <p id="message">{props.message}</p>
+      )}
     </>
   );
 };
 
-export default DisplayCurrentArticle;
+const mapStateToProps = state => {
+  return {
+    currentArticle: state.currentArticle,
+    currentArticleId: state.currentArticleId,
+    message: state.message
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeMessage: message => {
+      dispatch({ type: "CHANGE_MESSAGE", payload: message });
+    },
+    changeCurrentArticle: article => {
+      dispatch({ type: "CHANGE_ARTICLE", payload: article });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DisplayCurrentArticle);

@@ -6,8 +6,13 @@ describe("User is shown current article", () => {
   it("successfully", () => {
     cy.route({
       method: "GET",
+      url: "http://localhost:3000/api/v1/articles",
+      response: "fixture:side_articles_shown.json"
+    });
+    cy.route({
+      method: "GET",
       url: "http://localhost:3000/api/v1/articles/1",
-      response: "fixture:articles_show.json"
+      response: "fixture:article_show.json"
     });
     cy.visit("/");
     cy.get("#main-article-div").should("contain", "Body 1");
@@ -16,7 +21,12 @@ describe("User is shown current article", () => {
   it("unsuccessfully, specific article not found", () => {
     cy.route({
       method: "GET",
-      url: "http://localhost:3000/api/v1/articles/1",
+      url: "http://localhost:3000/api/v1/articles",
+      response: "fixture:side_articles_empty.json"
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/v1/articles/**",
       response: "fixture:specific_article_not_found.json",
       status: 404
     });
