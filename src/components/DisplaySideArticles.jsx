@@ -40,7 +40,7 @@ const DisplaySideArticles = props => {
   }
 
   return (
-    <>
+    <div id="side-articles">
       {!props.sideArticles ? (
         <p id="message">Loading...</p>
       ) : props.sideArticles.articles.length > 0 ? (
@@ -48,7 +48,7 @@ const DisplaySideArticles = props => {
       ) : (
         <p id="error-message">No articles found</p>
       )}
-    </>
+    </div>
   );
 };
 
