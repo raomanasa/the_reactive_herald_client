@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#main-article-div {
+  text-align: center;
+}
+
+[id^='side-article-'] {
+  padding: 10px;
+}

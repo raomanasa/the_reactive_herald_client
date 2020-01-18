@@ -5,8 +5,14 @@ import DisplaySideArticles from "./components/DisplaySideArticles";
 const App = () => {
     return (
       <>
-        <DisplayCurrentArticle />
-        <DisplaySideArticles />
+        <div class="ui internally celled grid">
+          <div className="twelve wide column">
+            <DisplayCurrentArticle />
+          </div>
+          <div className="four wide column">
+            <DisplaySideArticles />
+          </div>
+        </div>
       </>
     );
   }
