@@ -22,7 +22,12 @@ const DisplaySideArticles = props => {
     let articlesList = props.sideArticles.articles.map(article => {
       return (
         <div id={`side-article-${article.id}`} key={article.id}>
-          <p>{article.title}</p>
+          <a
+            onClick={() => props.changeCurrentArticleId(article.id)}
+            style={{ color: 'blue', cursor: 'pointer' }}
+            >
+            {article.title}
+          </a>
           <p>{article.body}</p>
         </div>
       );
