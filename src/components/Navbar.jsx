@@ -1,19 +1,20 @@
 import React from "react";
+import { Menu } from "semantic-ui-react";
 
 const Navbar = () => {
   return (
     <>
-      <nav className="ui pointing secondary menu">
-        <a className="ui item">Global</a>
-        <a className="ui item">Local</a>
-      </nav>
-      <nav className="ui fluid five item pointing secondary menu">
-        <a className="ui item">News</a>
-        <a className="ui item">Food</a>
-        <a className="ui item">Tech</a>
-        <a className="ui item">Culture</a>
-        <a className="ui item">Sports</a>
-      </nav>
+      <Menu secondary pointing>
+        <Menu.Item name='Global' />
+        <Menu.Item name='Local' />
+      </Menu>
+      <Menu secondary pointing fluid widths={5}>
+        <Menu.Item name='News' />
+        <Menu.Item name='Food' />
+        <Menu.Item name='Tech' />
+        <Menu.Item name='Culture' />
+        <Menu.Item name='Sports' />
+      </Menu>
     </>
   );
 };
