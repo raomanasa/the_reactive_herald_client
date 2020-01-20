@@ -3,6 +3,7 @@ import DisplayCurrentArticle from "./components/DisplayCurrentArticle";
 import DisplaySideArticles from "./components/DisplaySideArticles";
 import Navbar from "./components/Navbar";
 import { Header, Container, Grid } from "semantic-ui-react";
+import LoginForm from "./components/LoginForm"
 
 const App = () => {
   return (
@@ -11,6 +12,8 @@ const App = () => {
         The Reactive Herald
       </Header>
       <Navbar />
+      <button id="login">Login</button>
+      <LoginForm />
       <Grid celled='internally'>
         <Grid.Column width={12}>
           <DisplayCurrentArticle />
