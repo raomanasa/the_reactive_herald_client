@@ -3,9 +3,9 @@ import DisplayCurrentArticle from "./components/DisplayCurrentArticle";
 import DisplaySideArticles from "./components/DisplaySideArticles";
 import Navbar from "./components/Navbar";
 import { Header, Container, Grid } from "semantic-ui-react";
-import LoginForm from "./components/LoginForm"
+import LoginForm from "./components/LoginForm";
 import { render } from "@testing-library/react";
-import { authenticate } from './Modules/auth';
+import { authenticate } from './modules/auth';
 
 const App = () => {
   render() {
