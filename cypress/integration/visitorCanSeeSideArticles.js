@@ -10,7 +10,7 @@ describe("Visitor can see side articles", () => {
       response: "fixture:side_articles_shown.json"
     });
     cy.visit("/");
-    cy.get("#side-articles").children().should("have.length", "4");
+    cy.get("#side-articles").children().should("have.length", "3");
   });
 
   it("unsuccessfully", () => {

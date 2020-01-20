@@ -20,7 +20,7 @@ const DisplayCurrentArticle = props => {
     <>
       {props.currentArticle ? (
         <div id="main-article-div" key={props.currentArticle.id}>
-          <p id="article-title">{props.currentArticle.title}</p>
+          <h2 id="article-title">{props.currentArticle.title}</h2>
           <p id="article-body">{props.currentArticle.body}</p>
         </div>
       ) : (
