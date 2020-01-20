@@ -4,5 +4,6 @@ const initialState = {
   sideArticles: null,
   currentPage: null,
   message: "Loading..."
+  renderLoginForm: false
 }
 export default initialState
