@@ -3,7 +3,9 @@ const initialState = {
   currentArticleId: null,
   sideArticles: null,
   currentPage: null,
-  message: "Loading..."
-  renderLoginForm: false
+  message: "Loading...",
+  renderLoginForm: false,
+  authenticate:false,
+
 }
 export default initialState
