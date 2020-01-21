@@ -15,7 +15,7 @@ const Login = props => {
         setLoginMessage(`Logged in as: ${userDatas.data.email}`);
       })
       .catch(error => {
-        alert('Invalid login credentials');
+        alert("Invalid login credentials");
         window.location.reload();
       });
   };
@@ -29,28 +29,31 @@ const Login = props => {
       })
       .catch(error => {
         setLoginMessage(error);
-      })
-  }
+      });
+  };
 
   let loginButton;
 
   switch (true) {
     case displayLoginButton && !props.authenticated:
       loginButton = (
-        <button id="loginButton" onClick={() => setDisplayLoginButton(false)}>Login</button>
+        <button id="loginButton" onClick={() => setDisplayLoginButton(false)}>
+          Login
+        </button>
       );
       break;
     case !displayLoginButton && !props.authenticated:
-      loginButton = ( 
-      <form id="login-form" onSubmit={onLogin}>
-        <label>Email:</label>
-        <input name="email" type="email" id="email"></input>
+      loginButton = (
+        <form id="login-form" onSubmit={onLogin}>
+          <label>Email:</label>
+          <input name="email" type="email" id="email"></input>
 
-        <label>Password:</label>
-        <input name="password" type="password" id="password"></input>
+          <label>Password:</label>
+          <input name="password" type="password" id="password"></input>
 
-        <button id="submit">Submit</button>
-      </form>)
+          <button id="submit">Submit</button>
+        </form>
+      );
       break;
     case props.authenticated:
       loginButton = (
@@ -60,19 +63,15 @@ const Login = props => {
             Logout
           </button>
         </>
-      )
+      );
       break;
   }
 
-  return (
-      <div id="login">
-        {loginButton}
-      </div>
-  );
+  return <div id="login">{loginButton}</div>;
 };
 
 const mapStateToProps = state => ({
-    authenticated: state.authenticated
+  authenticated: state.authenticated
 });
 
 const mapDispatchToProps = dispatch => {
