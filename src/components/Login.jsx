@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import auth from "../modules/auth";
 
-const LoginForm = props => {
+const Login = props => {
   const [displayLoginButton, setDisplayLoginButton] = useState(true);
   const [loginMessage, setLoginMessage] = useState("");
 
@@ -13,25 +13,36 @@ const LoginForm = props => {
       .then(userDatas => {
         props.changeAuth(true);
         setLoginMessage(`Logged in as: ${userDatas.data.email}`);
-        console.log(userDatas);
+      })
+      .catch(error => {
+        alert('Invalid login credentials');
+        window.location.reload();
+      });
+  };
 
+  const onLogout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        props.changeAuth(false);
+        setDisplayLoginButton(true);
       })
       .catch(error => {
         setLoginMessage(error);
-        console.log(error);
-      });
-  };
+      })
+  }
 
   let loginButton;
 
   switch (true) {
     case displayLoginButton && !props.authenticated:
       loginButton = (
-        <button onClick={() => setDisplayLoginButton(false)}>Login</button>
+        <button id="loginButton" onClick={() => setDisplayLoginButton(false)}>Login</button>
       );
       break;
     case !displayLoginButton && !props.authenticated:
-      loginButton = ( <form id="login-form" onSubmit={onLogin}>
+      loginButton = ( 
+      <form id="login-form" onSubmit={onLogin}>
         <label>Email:</label>
         <input name="email" type="email" id="email"></input>
 
@@ -43,19 +54,24 @@ const LoginForm = props => {
       break;
     case props.authenticated:
       loginButton = (
-        loginMessage
+        <>
+          {loginMessage}
+          <button id="logoutButton" onClick={onLogout}>
+            Logout
+          </button>
+        </>
       )
-    break
+      break;
   }
 
   return (
-    <>
-    {loginButton}
-    </>
+      <div id="login">
+        {loginButton}
+      </div>
   );
 };
 
-const mapStateToProps = ({state}) => ({
+const mapStateToProps = state => ({
     authenticated: state.authenticated
 });
 
@@ -67,4 +83,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

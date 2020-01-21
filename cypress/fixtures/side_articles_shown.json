@@ -1,31 +1,31 @@
 {
   "articles": [
-      {
-          "id": 1,
-          "title": "Test1",
-          "body": "TestBody1"
-      },
-      {
-          "id": 2,
-          "title": "Test2",
-          "body": "TestBody2"
-      },
-      {
-          "id": 3,
-          "title": "Test3",
-          "body": "TestBody3"
-      },
-      {
-          "id": 4,
-          "title": "Test4",
-          "body": "TestBody4"
-      }
+    {
+    "id": 1,
+    "title": "Test1",
+    "body": "TestBody1"
+    },
+    {
+    "id": 2,
+    "title": "Test2",
+    "body": "TestBody2"
+    },
+    {
+    "id": 3,
+    "title": "Test3",
+    "body": "TestBody3"
+    },
+    {
+    "id": 4,
+    "title": "Test4",
+    "body": "TestBody4"
+    }
   ],
   "meta": {
-      "current_page": 1,
-      "next_page": 2,
-      "prev_page": null,
-      "total_pages": 2,
-      "total_count": 5
+    "current_page": 1,
+    "next_page": 2,
+    "prev_page": null,
+    "total_pages": 2,
+    "total_count": 5
   }
 }
