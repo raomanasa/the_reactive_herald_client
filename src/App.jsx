@@ -8,12 +8,11 @@ import LoginForm from "./components/LoginForm"
 const App = () => {
   return (
     <Container>
+      <LoginForm />
       <Header id="main-header">
         The Reactive Herald
       </Header>
       <Navbar />
-      <button id="login">Login</button>
-      <LoginForm />
       <Grid celled='internally'>
         <Grid.Column width={12}>
           <DisplayCurrentArticle />
