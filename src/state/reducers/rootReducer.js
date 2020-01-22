@@ -18,14 +18,19 @@ const rootReducer = (state = initialState, action) => {
         sideArticles: action.payload
       };
     case "CHANGE_CURRENT_PAGE":
-    return {
-      ...state,
-      currentPage: action.payload
-    };
+      return {
+        ...state,
+        currentPage: action.payload
+      };
     case "CHANGE_ARTICLE_ID":
       return {
         ...state,
         currentArticleId: action.payload
+      };
+    case "CHANGE_AUTHENTICATED":
+      return {
+        ...state,
+        authenticated: action.payload
       };
     default:
       return {

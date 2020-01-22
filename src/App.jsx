@@ -3,10 +3,12 @@ import DisplayCurrentArticle from "./components/DisplayCurrentArticle";
 import DisplaySideArticles from "./components/DisplaySideArticles";
 import Navbar from "./components/Navbar";
 import { Header, Container, Grid } from "semantic-ui-react";
+import Login from "./components/Login"
 
 const App = () => {
   return (
     <Container>
+      <Login />
       <Header id="main-header">
         The Reactive Herald
       </Header>

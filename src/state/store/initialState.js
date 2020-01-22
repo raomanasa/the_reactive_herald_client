@@ -3,6 +3,7 @@ const initialState = {
   currentArticleId: null,
   sideArticles: null,
   currentPage: null,
-  message: "Loading..."
+  message: "Loading...",
+  authenticated: false
 }
 export default initialState
