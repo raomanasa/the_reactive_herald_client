@@ -3,21 +3,24 @@ import {createArticle} from "../modules/articleData"
 
 
 const CreateArticle = () => {
-
-  submitArticleHandler = async() => {
-    const {title,body} = this.state
-    let response = await submitArticle(title,body)
-
+  let responseMessage
+  const submitArticleHandler = async e => {
+    e.preventDefault();
+    const response = await createArticle(
+      e.target.title.value,
+      e.target.body.value
+    )
+    
     if (response.status ===200){
-      thi
-
-      }
+      responseMessage =<p>Your article was successfully submitted for review by your publisher</p>
     }
-
+    else if (response.status ===422){
+      responseMessage =<p>Your article must have a title and content</p>
+    }
   }
   return (
   <div>
-  <form id="article-form" onSubmit={createArticle}>
+  <form id="article-form" onSubmit={submitArticleHandler}>
     <label>Title:</label>
     <input name="title" type="text" id="title"></input>
 

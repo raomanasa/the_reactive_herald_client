@@ -4,6 +4,7 @@ import DisplaySideArticles from "./components/DisplaySideArticles";
 import Navbar from "./components/Navbar";
 import { Header, Container, Grid } from "semantic-ui-react";
 import Login from "./components/Login"
+import CreateArticle from "./components/CreateArticle"
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Grid celled='internally'>
         <Grid.Column width={12}>
           <DisplayCurrentArticle />
+          <CreateArticle />
         </Grid.Column>
         <Grid.Column width={4}>
           <DisplaySideArticles />

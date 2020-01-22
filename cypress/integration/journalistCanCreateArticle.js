@@ -34,7 +34,7 @@ describe("Journalist attempts to create an article", () => {
         uid: "user@mail.com"
       }
     });
-    cy.get("#create-article").click();
+    //cy.get("#create-article").click();
     cy.get("#article-form").within(() => {
       cy.get("#title").type("This is a news article");
       cy.get("#body").type("Scourge of the seven seas rutters Pieces of Eight sutler spyglass swab strike colors" +
@@ -42,7 +42,7 @@ describe("Journalist attempts to create an article", () => {
                             "sloop Jack Ketch man-of-war boatswain hearties furl. Mutiny lanyard ye long boat main sheet" +
                             "Spanish Main parrel strike colors loaded to the gunwalls interloper.");
       cy.get("button")
-        .contains("Submit article for review")
+        .contains("Submit")
         .click();
     });
     cy.get("#create-article").should("contain", "Your article was successfully submitted for review by your publisher.");
@@ -57,7 +57,7 @@ describe("Journalist attempts to create an article", () => {
         errors: ["Your article must have a title and content."],
       }
     });
-    cy.get("#create-article").click();
+    //cy.get("#create-article").click();
     cy.get("#article-form").within(() => {
       cy.get("#title").type("");
       cy.get("#body").type("Scourge of the seven seas rutters Pieces of Eight sutler spyglass swab strike colors" +
@@ -65,7 +65,7 @@ describe("Journalist attempts to create an article", () => {
                             "sloop Jack Ketch man-of-war boatswain hearties furl. Mutiny lanyard ye long boat main sheet" +
                             "Spanish Main parrel strike colors loaded to the gunwalls interloper.");
       cy.get("button")
-        .contains("Submit article for review")
+        .contains("Submit")
         .click();
     });
     cy.get("#create-article").should("contain", "Your article must have a title and content.");
@@ -80,12 +80,12 @@ describe("Journalist attempts to create an article", () => {
         errors: ["Your article must have a title and content."],
       }
     });
-    cy.get("#create-article").click();
+   // cy.get("#create-article").click();
     cy.get("#article-form").within(() => {
       cy.get("#title").type("This is a news article");
       cy.get("#body").type("");
       cy.get("button")
-        .contains("Submit article for review")
+        .contains("Submit")
         .click();
     });
     cy.get("#create-article").should("contain", "Your article must have a title and content.");
